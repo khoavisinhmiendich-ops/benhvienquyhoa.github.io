@@ -117,15 +117,12 @@ button:hover{
 
 <div class="section-title">THÔNG TIN LIÊN HỆ</div>
 
-<form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di">
+<form id="formXN">
 
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
-<input type="text" name="thoigian" placeholder="Thời gian" required>
 <textarea name="noidung" rows="4" placeholder="Nội dung cần tư vấn"></textarea>
-
-<input type="hidden" name="thoigian" id="thoigian">
 
 <button type="submit">GỬI YÊU CẦU</button>
 
@@ -134,9 +131,36 @@ button:hover{
 </div>
 
 <script>
-document.getElementById("thoigian").value = new Date().toLocaleString("vi-VN");
+document.getElementById("formXN").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const data = {
+        hoten: document.querySelector("input[name='hoten']").value,
+        email: document.querySelector("input[name='email']").value,
+        sdt: document.querySelector("input[name='sdt']").value,
+        noidung: document.querySelector("textarea[name='noidung']").value,
+        thoigian: new Date().toLocaleString("vi-VN")
+    };
+
+    fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        alert("Đã gửi thành công! Vui lòng nhắn tin qua Messenger để được hỗ trợ nhanh.");
+        
+        window.open("https://m.me/benhvientwquyhoa", "_blank");
+
+        document.getElementById("formXN").reset();
+    })
+    .catch(error => {
+        alert("Có lỗi xảy ra, vui lòng thử lại!");
+    });
+});
 </script>
 
 </body>
-
 </html>
