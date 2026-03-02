@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phiếu trả kết quả xét nghiệm</title>
+
+<style>
+body{
+    margin:0;
+    font-family:"Times New Roman", Times, serif;
+    background: url("benhvien.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container{
+    width:900px;
+    margin:60px auto;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    padding:40px 60px;
+    border-radius:12px;
+    box-shadow:0 0 40px rgba(0,0,0,0.1);
+}
+.header{
+    text-align:center;
+}
+
+.header img{
+    width:140px;
+    margin-bottom:10px;
+}
+
+.header h1{
+    font-size:22px;
+    margin:5px 0;
+    font-weight:bold;
+    color:#003366;
+}
+
+.header h2{
+    font-size:18px;
+    margin:5px 0;
+}
+
+.header h3{
+    font-size:18px;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.info-box{
+    margin-top:25px;
+    background:#eef3fa;
+    padding:20px;
+    border-left:6px solid #003366;
+    border-radius:8px;
+    line-height:1.7;
+    font-size:16px;
+}
+
+.section-title{
+    margin-top:30px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:15px;
+    font-family:"Times New Roman", Times, serif;
+    font-size:16px;
+    border:1px solid #666;
+    border-radius:4px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#003366;
+    color:white;
+    font-size:16px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#001f4d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<img src="logo.png" alt="Logo bệnh viện">
+<h1>BỆNH VIỆN PHONG - DA LIỄU TRUNG ƯƠNG QUY HÒA</h1>
+<h2>KHOA VI SINH - MIỄN DỊCH</h2>
+<h3>PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN</h3>
+</div>
+
+<div class="info-box">
+<b>Địa chỉ:</b> 05A Chế Lan Viên, P. Quy Nhơn, Gia Lai<br><br>
+<b>Điện thoại:</b><br>
+- 0256.3523536 (Giờ hành chính)<br>
+- 0256.3705557 (Ngoài giờ)<br><br>
+<b>Thời gian làm việc:</b><br>
+- Sáng: 07h00 - 11h30<br>
+- Chiều: 13h30 - 17h00<br>
+- Cấp cứu: 24/24
+</div>
+
+<div class="section-title">THÔNG TIN LIÊN HỆ</div>
+
+<form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di">
+
+<input type="text" name="hoten" placeholder="Họ và tên" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="sdt" placeholder="Số điện thoại" required>
+<input type="text" name="thoigian" placeholder="Thời gian" required>
+<textarea name="noidung" rows="4" placeholder="Nội dung cần tư vấn"></textarea>
+
+<input type="hidden" name="thoigian" id="thoigian">
+
+<button type="submit">GỬI YÊU CẦU</button>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById("thoigian").value = new Date().toLocaleString("vi-VN");
+</script>
+
+</body>
+</html>
