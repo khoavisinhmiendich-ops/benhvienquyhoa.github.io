@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:"Times New Roman", Times, serif;
-    background:url("benhvien.jpg") center/cover no-repeat fixed;
+    background:#f2f6fa;
 }
 
 /* TOPBAR */
@@ -33,28 +33,40 @@ body{
     border-bottom:3px solid #003366;
 }
 
-.header img{
-    width:110px;
-}
+.header img{width:110px;}
 
 .header h1{
     font-size:20px;
     color:#003366;
-    margin-top:5px;
     font-weight:bold;
+    margin-top:5px;
 }
 
-/* MENU */
+/* NAVBAR */
 .navbar{
     background:#00509e;
     display:flex;
     justify-content:center;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+}
+
+.navbar li{
+    position:relative;
 }
 
 .navbar a{
+    display:block;
+    padding:15px 25px;
     color:white;
     text-decoration:none;
-    padding:15px 25px;
     font-size:15px;
     transition:0.3s;
 }
@@ -63,29 +75,62 @@ body{
     background:#003366;
 }
 
-/* HERO BANNER */
-.hero{
-    height:350px;
-    background:url("benhvien.jpg") center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-}
-
-.hero::after{
-    content:"";
+/* DROPDOWN */
+.dropdown{
+    display:none;
     position:absolute;
-    inset:0;
-    background:rgba(0,51,102,0.5);
+    background:white;
+    min-width:200px;
+    top:100%;
+    left:0;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
 }
 
-.hero h2{
+.dropdown a{
+    color:#003366;
+    padding:12px 15px;
+}
+
+.dropdown a:hover{
+    background:#eef3fa;
+}
+
+.navbar li:hover .dropdown{
+    display:block;
+}
+
+/* HERO SLIDESHOW */
+.hero{
     position:relative;
+    height:400px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1s ease;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.hero-title{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
     color:white;
     font-size:28px;
-    z-index:2;
-    animation:fadeIn 1.5s ease;
+    font-weight:bold;
+    background:rgba(0,51,102,0.6);
+    padding:12px 30px;
+    border-radius:6px;
 }
 
 /* CONTAINER */
@@ -99,20 +144,17 @@ body{
 .card{
     background:white;
     padding:40px;
-    border-radius:12px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    border-radius:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
     margin-bottom:40px;
     opacity:0;
     transform:translateY(40px);
-    animation:slideUp 1s forwards;
+    transition:0.8s;
 }
 
-.card:nth-child(1){animation-delay:0.2s;}
-.card:nth-child(2){animation-delay:0.5s;}
-.card:nth-child(3){animation-delay:0.8s;}
-
-@keyframes slideUp{
-    to{opacity:1;transform:translateY(0);}
+.card.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 .section-title{
@@ -122,10 +164,7 @@ body{
     margin-bottom:15px;
 }
 
-.card p{
-    line-height:1.7;
-    margin-bottom:10px;
-}
+.card p{line-height:1.7;margin-bottom:10px;}
 
 /* FORM */
 input, textarea{
@@ -135,13 +174,6 @@ input, textarea{
     border:1px solid #999;
     border-radius:6px;
     font-size:15px;
-    transition:0.3s;
-}
-
-input:focus, textarea:focus{
-    border-color:#003366;
-    box-shadow:0 0 0 3px rgba(0,51,102,0.1);
-    outline:none;
 }
 
 button{
@@ -152,7 +184,6 @@ button{
     border:none;
     border-radius:6px;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{background:#001f4d;}
@@ -164,42 +195,6 @@ button:hover{background:#001f4d;}
     text-align:center;
     padding:20px;
     margin-top:60px;
-}
-
-/* FLOATING MESSENGER */
-.messenger{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#0084ff;
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.messenger:hover{transform:scale(1.1);}
-
-.messenger i{
-    font-size:30px;
-    color:white;
-}
-
-/* FADE */
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-    .hero{height:220px;}
-    .hero h2{font-size:18px;padding:0 15px;text-align:center;}
 }
 </style>
 </head>
@@ -216,15 +211,34 @@ button:hover{background:#001f4d;}
 <h1>BỆNH VIỆN PHONG - DA LIỄU TRUNG ƯƠNG QUY HÒA</h1>
 </div>
 
-<div class="navbar">
-<a href="#">Trang chủ</a>
-<a href="#">Giới thiệu</a>
-<a href="#">Dịch vụ</a>
-<a href="#">Liên hệ</a>
+<nav class="navbar">
+<ul>
+<li><a href="#">Trang chủ</a></li>
+<li>
+<a href="#">Giới thiệu ▾</a>
+<div class="dropdown">
+
 </div>
+</li>
+<li>
+<a href="#">Dịch vụ ▾</a>
+<div class="dropdown">
+<a href="#">Xét nghiệm dị nguyên</a>
+    
+</div>
+</li>
+<li><a href="#">Liên hệ</a></li>
+</ul>
+</nav>
 
 <div class="hero">
-<h2>PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN</h2>
+<div class="slide active" style="background-image:url('benhvien.jpg');"></div>
+<div class="slide" style="background-image:url('benhvien2.jpg');"></div>
+<div class="slide" style="background-image:url('benhvien3.jpg');"></div>
+
+<div class="hero-title">
+PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
+</div>
 </div>
 
 <div class="container">
@@ -237,16 +251,13 @@ button:hover{background:#001f4d;}
 
 <div class="card">
 <div class="section-title">Gửi yêu cầu nhận kết quả</div>
-
 <form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di" method="POST">
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
 <textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
-<input type="hidden" name="thoigian" id="thoigian">
 <button type="submit">GỬI YÊU CẦU</button>
 </form>
-
 </div>
 
 </div>
@@ -255,16 +266,27 @@ button:hover{background:#001f4d;}
 © 2026 Bệnh viện Phong - Da Liễu TW Quy Hòa
 </div>
 
-<div class="messenger" onclick="window.open('https://m.me/benhvientwquyhoa','_blank')">
-<i class="fab fa-facebook-messenger"></i>
-</div>
-
 <script>
-document.getElementById("thoigian").value =
-new Date().toLocaleString("vi-VN");
+/* SLIDESHOW */
+let slides=document.querySelectorAll('.slide');
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+},4000);
+
+/* SCROLL ANIMATION */
+let cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+let pos=card.getBoundingClientRect().top;
+if(pos<window.innerHeight-100){
+card.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
 </html>
-
-
