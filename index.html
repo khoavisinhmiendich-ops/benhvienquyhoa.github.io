@@ -3,149 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khoa Vi Sinh - Miễn Dịch | Bệnh viện Trung ương Quy Hòa</title>
+<title>Phiếu trả kết quả xét nghiệm</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+
 body{
-    font-family:'Roboto',sans-serif;
-    background:#f4f7fb;
-    color:#333;
+    font-family:"Times New Roman", Times, serif;
+    background: linear-gradient(rgba(0,51,102,0.4),rgba(0,51,102,0.4)),
+                url("benhvien.jpg") no-repeat center center fixed;
+    background-size: cover;
 }
 
-/* ===== TOP BAR ===== */
-.topbar{
-    background:#003366;
-    color:#fff;
-    padding:8px 40px;
-    font-size:14px;
-    display:flex;
-    justify-content:space-between;
-}
-
-/* ===== HEADER ===== */
-.header{
-    background:white;
-    text-align:center;
-    padding:20px 10px;
-    border-bottom:3px solid #003366;
-}
-.header img{width:90px;margin-bottom:10px;}
-.header h1{
-    color:#003366;
-    font-size:20px;
-    font-weight:700;
-}
-.header h2{
-    font-size:15px;
-    font-weight:500;
-}
-
-/* ===== NAV MENU ===== */
-.navbar{
-    background:#005fa3;
-    display:flex;
-    justify-content:center;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 3px 10px rgba(0,0,0,0.15);
-}
-.navbar a{
-    color:white;
-    padding:14px 25px;
-    text-decoration:none;
-    font-weight:500;
-    transition:0.3s;
-}
-.navbar a:hover{
-    background:#003366;
-}
-
-/* ===== HERO ===== */
-.hero{
-    height:60vh;
-    background:url("benhvien.jpg") center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-}
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(
-        rgba(0,51,102,0.6),
-        rgba(0,51,102,0.3)
-    );
-}
-.hero h3{
-    position:relative;
-    color:white;
-    font-size:32px;
-    font-weight:700;
-    text-shadow:0 4px 15px rgba(0,0,0,0.6);
-}
-
-@keyframes fadeInDown{
-    from{opacity:0; transform:translateY(-30px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* ===== CONTENT ===== */
+/* CONTAINER */
 .container{
-    max-width:1100px;
+    width:900px;
+    max-width:95%;
     margin:60px auto;
-    padding:0 20px;
+    background: rgba(255,255,255,0.95);
+    padding:50px 60px;
+    border-radius:14px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+    animation:fadeUp 0.8s ease;
 }
 
-.card{
-    background:white;
-    padding:35px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    margin-bottom:40px;
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s ease;
-}
-.card.show{
-    opacity:1;
-    transform:translateY(0);
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
-.section-title{
-    font-size:22px;
-    font-weight:700;
-    color:#003366;
-    margin-bottom:20px;
-    border-left:5px solid #005fa3;
-    padding-left:12px;
-}
+.header{text-align:center;}
 
-.card p{
-    line-height:1.7;
+.header img{
+    width:130px;
     margin-bottom:10px;
 }
 
-/* ===== FORM ===== */
+.header h1{
+    font-size:22px;
+    font-weight:bold;
+    color:#003366;
+}
+
+.header h2{
+    font-size:18px;
+    margin-top:5px;
+}
+
+.header h3{
+    font-size:18px;
+    margin-top:20px;
+    font-weight:bold;
+    color:#003366;
+}
+
+/* INFO BOX */
+.info-box{
+    margin-top:30px;
+    background:#eef3fa;
+    padding:25px;
+    border-left:6px solid #003366;
+    border-radius:8px;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/* FORM */
+.section-title{
+    margin-top:35px;
+    font-size:18px;
+    font-weight:bold;
+    color:#003366;
+}
+
 input, textarea{
     width:100%;
-    padding:14px;
+    padding:12px;
+    margin-top:12px;
     margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:15px;
+    font-family:"Times New Roman", Times, serif;
+    font-size:16px;
+    border:1px solid #999;
+    border-radius:6px;
     transition:0.3s;
 }
+
 input:focus, textarea:focus{
-    border-color:#005fa3;
-    box-shadow:0 0 0 3px rgba(0,95,163,0.1);
+    border-color:#003366;
+    box-shadow:0 0 0 3px rgba(0,51,102,0.1);
     outline:none;
 }
 
@@ -154,34 +101,18 @@ button{
     padding:15px;
     background:#003366;
     color:white;
+    font-size:16px;
     border:none;
-    border-radius:8px;
-    font-size:15px;
-    font-weight:600;
+    border-radius:6px;
     cursor:pointer;
     transition:0.3s;
 }
-button:hover{background:#001f4d;}
 
-.success{
-    display:none;
-    margin-top:15px;
-    padding:12px;
-    background:#d4edda;
-    color:#155724;
-    border-radius:6px;
+button:hover{
+    background:#001f4d;
 }
 
-/* ===== FOOTER ===== */
-.footer{
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:60px;
-}
-
-/* ===== FLOATING MESSENGER ===== */
+/* FLOATING MESSENGER */
 .messenger{
     position:fixed;
     bottom:25px;
@@ -193,92 +124,69 @@ button:hover{background:#001f4d;}
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
     cursor:pointer;
     transition:0.3s;
 }
-.messenger:hover{transform:scale(1.1);}
-.messenger img{width:32px;}
 
-/* MOBILE */
-@media(max-width:768px){
-    .navbar{flex-wrap:wrap;}
-    .hero{height:45vh;}
-    .hero h3{font-size:22px;}
+.messenger:hover{
+    transform:scale(1.1);
+}
+
+.messenger i{
+    font-size:30px;
+    color:white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-<span>📞 0256.3523536</span>
-<span>🕒 07h00 - 17h00</span>
-</div>
+<div class="container">
 
 <div class="header">
-<img src="logo.png">
+<img src="logo.png" alt="Logo bệnh viện">
 <h1>BỆNH VIỆN PHONG - DA LIỄU TRUNG ƯƠNG QUY HÒA</h1>
 <h2>KHOA VI SINH - MIỄN DỊCH</h2>
-</div>
-
-<div class="navbar">
-<a href="#">Trang chủ</a>
-<a href="#">Giới thiệu</a>
-<a href="#">Dịch vụ</a>
-<a href="#">Tin tức</a>
-<a href="#">Liên hệ</a>
-</div>
-
-<div class="hero">
 <h3>PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN</h3>
 </div>
 
-<div class="container">
-
-<div class="card">
-<div class="section-title">Giới thiệu khoa</div>
-<p>Khoa Vi Sinh - Miễn Dịch thực hiện các xét nghiệm dị nguyên, bệnh lý dị ứng.</p>
-<p>Hệ thống xét nghiệm hiện đại, đảm bảo độ chính xác và an toàn.</p>
+<div class="info-box">
+<b>Địa chỉ:</b> 05A Chế Lan Viên, TP. Quy Nhơn<br><br>
+<b>Điện thoại:</b><br>
+- 0256.3523536 (Giờ hành chính)<br>
+- 0256.3705557 (Ngoài giờ)<br><br>
+<b>Thời gian làm việc:</b><br>
+- Sáng: 07h00 - 11h30<br>
+- Chiều: 13h30 - 17h00<br>
+- Cấp cứu: 24/24
 </div>
 
-<div class="card">
-<div class="section-title">Gửi yêu cầu nhận kết quả</div>
+<div class="section-title">THÔNG TIN LIÊN HỆ</div>
 
-<form id="formXN">
+<form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di" method="POST">
+
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
-<textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
-<button type="submit" id="btnGui">GỬI YÊU CẦU</button>
+<textarea name="noidung" rows="4" placeholder="Nội dung cần tư vấn"></textarea>
+
+<input type="hidden" name="thoigian" id="thoigian">
+
+<button type="submit">GỬI YÊU CẦU</button>
+
 </form>
 
-<div class="success" id="successMsg">
-✔ Gửi thành công! Đang mở Messenger...
 </div>
 
-</div>
-</div>
-
-<div class="footer">
-© 2026 Bệnh viện Phong - Da Liễu TW Quy Hòa | Khoa Vi Sinh - Miễn Dịch
-</div>
-
+<!-- Messenger Button -->
 <div class="messenger" onclick="window.open('https://m.me/benhvientwquyhoa','_blank')">
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Facebook_Messenger_4_Logo.svg">
+<i class="fab fa-facebook-messenger"></i>
 </div>
 
 <script>
-/* Animation scroll */
-const cards=document.querySelectorAll(".card");
-window.addEventListener("scroll",()=>{
-cards.forEach(card=>{
-const top=card.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-card.classList.add("show");
-}
-});
-});
+document.getElementById("thoigian").value =
+new Date().toLocaleString("vi-VN");
 </script>
 
 </body>
