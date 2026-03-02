@@ -3,90 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phiếu trả kết quả xét nghiệm</title>
+<title>Khoa Vi Sinh - Miễn Dịch | BV Quy Hòa</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
 body{
     font-family:"Times New Roman", Times, serif;
-    background: linear-gradient(rgba(0,51,102,0.4),rgba(0,51,102,0.4)),
-                url("benhvien.jpg") no-repeat center center fixed;
-    background-size: cover;
+    background:url("benhvien.jpg") center/cover no-repeat fixed;
+}
+
+/* TOPBAR */
+.topbar{
+    background:#003366;
+    color:white;
+    padding:8px 40px;
+    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* HEADER */
+.header{
+    background:white;
+    padding:15px 0;
+    text-align:center;
+    border-bottom:3px solid #003366;
+}
+
+.header img{
+    width:110px;
+}
+
+.header h1{
+    font-size:20px;
+    color:#003366;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* MENU */
+.navbar{
+    background:#00509e;
+    display:flex;
+    justify-content:center;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.navbar a:hover{
+    background:#003366;
+}
+
+/* HERO BANNER */
+.hero{
+    height:350px;
+    background:url("benhvien.jpg") center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,51,102,0.5);
+}
+
+.hero h2{
+    position:relative;
+    color:white;
+    font-size:28px;
+    z-index:2;
+    animation:fadeIn 1.5s ease;
 }
 
 /* CONTAINER */
 .container{
-    width:900px;
+    width:1100px;
     max-width:95%;
     margin:60px auto;
-    background: rgba(255,255,255,0.2);
-    padding:50px 60px;
-    border-radius:14px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.2);
-    animation:fadeUp 0.8s ease;
 }
 
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px);}
+/* CARD */
+.card{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    margin-bottom:40px;
+    opacity:0;
+    transform:translateY(40px);
+    animation:slideUp 1s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.5s;}
+.card:nth-child(3){animation-delay:0.8s;}
+
+@keyframes slideUp{
     to{opacity:1;transform:translateY(0);}
 }
 
-.header{text-align:center;}
+.section-title{
+    font-size:20px;
+    font-weight:bold;
+    color:#003366;
+    margin-bottom:15px;
+}
 
-.header img{
-    width:130px;
+.card p{
+    line-height:1.7;
     margin-bottom:10px;
 }
 
-.header h1{
-    font-size:22px;
-    font-weight:bold;
-    color:#003366;
-}
-
-.header h2{
-    font-size:18px;
-    margin-top:5px;
-}
-
-.header h3{
-    font-size:18px;
-    margin-top:20px;
-    font-weight:bold;
-    color:#003366;
-}
-
-/* INFO BOX */
-.info-box{
-    margin-top:30px;
-    background:#eef3fa;
-    padding:25px;
-    border-left:6px solid #003366;
-    border-radius:8px;
-    line-height:1.8;
-    font-size:16px;
-}
-
 /* FORM */
-.section-title{
-    margin-top:35px;
-    font-size:18px;
-    font-weight:bold;
-    color:#003366;
-}
-
 input, textarea{
     width:100%;
     padding:12px;
-    margin-top:12px;
     margin-bottom:15px;
-    font-family:"Times New Roman", Times, serif;
-    font-size:16px;
     border:1px solid #999;
     border-radius:6px;
+    font-size:15px;
     transition:0.3s;
 }
 
@@ -98,18 +146,24 @@ input:focus, textarea:focus{
 
 button{
     width:100%;
-    padding:15px;
+    padding:14px;
     background:#003366;
     color:white;
-    font-size:16px;
     border:none;
     border-radius:6px;
     cursor:pointer;
     transition:0.3s;
 }
 
-button:hover{
-    background:#001f4d;
+button:hover{background:#001f4d;}
+
+/* FOOTER */
+.footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:60px;
 }
 
 /* FLOATING MESSENGER */
@@ -129,57 +183,78 @@ button:hover{
     transition:0.3s;
 }
 
-.messenger:hover{
-    transform:scale(1.1);
-}
+.messenger:hover{transform:scale(1.1);}
 
 .messenger i{
     font-size:30px;
     color:white;
+}
+
+/* FADE */
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .hero{height:220px;}
+    .hero h2{font-size:18px;padding:0 15px;text-align:center;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="topbar">
+<span>📞 0256.3523536</span>
+<span>🕒 07h00 - 17h00</span>
+</div>
 
 <div class="header">
-<img src="logo.png" alt="Logo bệnh viện">
+<img src="logo.png">
 <h1>BỆNH VIỆN PHONG - DA LIỄU TRUNG ƯƠNG QUY HÒA</h1>
-<h2>KHOA VI SINH - MIỄN DỊCH</h2>
-<h3>PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN</h3>
 </div>
 
-<div class="info-box">
-<b>Địa chỉ:</b> 05A Chế Lan Viên, TP. Quy Nhơn<br><br>
-<b>Điện thoại:</b><br>
-- 0256.3523536 (Giờ hành chính)<br>
-- 0256.3705557 (Ngoài giờ)<br><br>
-<b>Thời gian làm việc:</b><br>
-- Sáng: 07h00 - 11h30<br>
-- Chiều: 13h30 - 17h00<br>
-- Cấp cứu: 24/24
+<div class="navbar">
+<a href="#">Trang chủ</a>
+<a href="#">Giới thiệu</a>
+<a href="#">Dịch vụ</a>
+<a href="#">Liên hệ</a>
 </div>
 
-<div class="section-title">THÔNG TIN LIÊN HỆ</div>
+<div class="hero">
+<h2>PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN</h2>
+</div>
+
+<div class="container">
+
+<div class="card">
+<div class="section-title">Giới thiệu khoa</div>
+<p>Khoa Vi Sinh - Miễn Dịch thực hiện các xét nghiệm dị nguyên, bệnh lý dị ứng.</p>
+<p>Hệ thống xét nghiệm hiện đại, đảm bảo độ chính xác và an toàn.</p>
+</div>
+
+<div class="card">
+<div class="section-title">Gửi yêu cầu nhận kết quả</div>
 
 <form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di" method="POST">
-
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
-<textarea name="noidung" rows="4" placeholder="Nội dung cần tư vấn"></textarea>
-
+<textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
 <input type="hidden" name="thoigian" id="thoigian">
-
 <button type="submit">GỬI YÊU CẦU</button>
-
 </form>
 
 </div>
 
-<!-- Messenger Button -->
+</div>
+
+<div class="footer">
+© 2026 Bệnh viện Phong - Da Liễu TW Quy Hòa
+</div>
+
 <div class="messenger" onclick="window.open('https://m.me/benhvientwquyhoa','_blank')">
 <i class="fab fa-facebook-messenger"></i>
 </div>
@@ -191,6 +266,5 @@ new Date().toLocaleString("vi-VN");
 
 </body>
 </html>
-
 
 
