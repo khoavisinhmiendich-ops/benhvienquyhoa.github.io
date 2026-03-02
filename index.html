@@ -58,9 +58,7 @@ body{
     display:flex;
 }
 
-.navbar li{
-    position:relative;
-}
+.navbar li{position:relative;}
 
 .navbar a{
     display:block;
@@ -71,9 +69,7 @@ body{
     transition:0.3s;
 }
 
-.navbar a:hover{
-    background:#003366;
-}
+.navbar a:hover{background:#003366;}
 
 /* DROPDOWN */
 .dropdown{
@@ -91,15 +87,11 @@ body{
     padding:12px 15px;
 }
 
-.dropdown a:hover{
-    background:#eef3fa;
-}
+.dropdown a:hover{background:#eef3fa;}
 
-.navbar li:hover .dropdown{
-    display:block;
-}
+.navbar li:hover .dropdown{display:block;}
 
-/* HERO SLIDESHOW */
+/* HERO */
 .hero{
     position:relative;
     height:400px;
@@ -116,9 +108,7 @@ body{
     transition:opacity 1s ease;
 }
 
-.slide.active{
-    opacity:1;
-}
+.slide.active{opacity:1;}
 
 .hero-title{
     position:absolute;
@@ -184,9 +174,22 @@ button{
     border:none;
     border-radius:6px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 button:hover{background:#001f4d;}
+
+/* SUCCESS BOX */
+#successBox{
+    display:none;
+    background:#d4edda;
+    color:#155724;
+    padding:12px;
+    border-radius:6px;
+    margin-bottom:20px;
+    text-align:center;
+    font-weight:bold;
+}
 
 /* FOOTER */
 .footer{
@@ -214,19 +217,8 @@ button:hover{background:#001f4d;}
 <nav class="navbar">
 <ul>
 <li><a href="#">Trang chủ</a></li>
-<li>
-<a href="#">Giới thiệu ▾</a>
-<div class="dropdown">
-
-</div>
-</li>
-<li>
-<a href="#">Dịch vụ ▾</a>
-<div class="dropdown">
-<a href="#">Xét nghiệm dị nguyên</a>
-    
-</div>
-</li>
+<li><a href="#">Giới thiệu</a></li>
+<li><a href="#">Dịch vụ</a></li>
 <li><a href="#">Liên hệ</a></li>
 </ul>
 </nav>
@@ -235,7 +227,6 @@ button:hover{background:#001f4d;}
 <div class="slide active" style="background-image:url('benhvien.jpg');"></div>
 <div class="slide" style="background-image:url('benhvien2.jpg');"></div>
 <div class="slide" style="background-image:url('benhvien3.jpg');"></div>
-
 <div class="hero-title">
 PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
 </div>
@@ -251,13 +242,17 @@ PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
 
 <div class="card">
 <div class="section-title">Gửi yêu cầu nhận kết quả</div>
-<form action="https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di" method="POST">
+
+<div id="successBox">✔ Yêu cầu đã gửi thành công!</div>
+
+<form id="formXN">
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
 <textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
 <button type="submit">GỬI YÊU CẦU</button>
 </form>
+
 </div>
 
 </div>
@@ -284,6 +279,47 @@ let pos=card.getBoundingClientRect().top;
 if(pos<window.innerHeight-100){
 card.classList.add('show');
 }
+});
+});
+
+/* FORM SUBMIT PROFESSIONAL */
+document.getElementById("formXN").addEventListener("submit", function(e){
+e.preventDefault();
+
+const btn=this.querySelector("button");
+btn.disabled=true;
+btn.innerText="Đang gửi...";
+
+const data={
+hoten:this.hoten.value,
+email:this.email.value,
+sdt:this.sdt.value,
+noidung:this.noidung.value,
+thoigian:new Date().toLocaleString("vi-VN")
+};
+
+fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(data)
+})
+.then(res=>{
+if(res.ok){
+document.getElementById("successBox").style.display="block";
+this.reset();
+setTimeout(()=>{
+document.getElementById("successBox").style.display="none";
+},4000);
+}else{
+alert("Có lỗi xảy ra!");
+}
+})
+.catch(()=>{
+alert("Không thể kết nối máy chủ!");
+})
+.finally(()=>{
+btn.disabled=false;
+btn.innerText="GỬI YÊU CẦU";
 });
 });
 </script>
