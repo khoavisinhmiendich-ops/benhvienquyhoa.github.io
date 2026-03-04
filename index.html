@@ -71,26 +71,6 @@ body{
 
 .navbar a:hover{background:#003366;}
 
-/* DROPDOWN */
-.dropdown{
-    display:none;
-    position:absolute;
-    background:white;
-    min-width:200px;
-    top:100%;
-    left:0;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.dropdown a{
-    color:#003366;
-    padding:12px 15px;
-}
-
-.dropdown a:hover{background:#eef3fa;}
-
-.navbar li:hover .dropdown{display:block;}
-
 /* HERO */
 .hero{
     position:relative;
@@ -154,8 +134,6 @@ body{
     margin-bottom:15px;
 }
 
-.card p{line-height:1.7;margin-bottom:10px;}
-
 /* FORM */
 input, textarea{
     width:100%;
@@ -174,12 +152,10 @@ button{
     border:none;
     border-radius:6px;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{background:#001f4d;}
 
-/* SUCCESS BOX */
 #successBox{
     display:none;
     background:#d4edda;
@@ -191,7 +167,6 @@ button:hover{background:#001f4d;}
     font-weight:bold;
 }
 
-/* FOOTER */
 .footer{
     background:#003366;
     color:white;
@@ -246,17 +221,14 @@ PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
 <div id="successBox">✔ Yêu cầu đã gửi thành công!</div>
 
 <form id="formXN">
-    
 <input type="text" name="hoten" placeholder="Họ và tên" required>
 <input type="email" name="email" placeholder="Email" required>
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
-<input type="text" name="thoigian" placeholder="Thời gian" required>
 <textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
 <button type="submit">GỬI YÊU CẦU</button>
 </form>
 
 </div>
-
 </div>
 
 <div class="footer">
@@ -284,52 +256,49 @@ card.classList.add('show');
 });
 });
 
-/* FORM SUBMIT PROFESSIONAL */
-<script>
+/* FORM SUBMIT */
 document.getElementById("formXN").addEventListener("submit", function(e){
-    e.preventDefault();
+e.preventDefault();
 
-    const btn=this.querySelector("button");
-    btn.disabled=true;
-    btn.innerText="Đang gửi...";
+const btn=this.querySelector("button");
+btn.disabled=true;
+btn.innerText="Đang gửi...";
 
-    const data={
-        hoten:this.hoten.value,
-        email:this.email.value,
-        sdt:this.sdt.value,
-        noidung:this.noidung.value,
-        thoigian:new Date().toLocaleString("vi-VN")
-    };
+const data={
+hoten:this.hoten.value,
+email:this.email.value,
+sdt:this.sdt.value,
+noidung:this.noidung.value,
+thoigian:new Date().toLocaleString("vi-VN")
+};
 
-    fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(data)
-    })
-    .then(res=>{
-        if(res.ok){
-            document.getElementById("successBox").style.display="block";
-            this.reset();
-            setTimeout(()=>{
-                document.getElementById("successBox").style.display="none";
-            },4000);
-        }else{
-            alert("Có lỗi xảy ra!");
-        }
-    })
-    .catch(()=>{
-        alert("Không thể kết nối máy chủ!");
-    })
-    .finally(()=>{
-        btn.disabled=false;
-        btn.innerText="GỬI YÊU CẦU";
-    });
+fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify(data)
+})
+.then(res=>{
+if(res.ok){
+document.getElementById("successBox").style.display="block";
+this.reset();
+setTimeout(()=>{
+document.getElementById("successBox").style.display="none";
+},4000);
+}else{
+alert("Có lỗi xảy ra!");
+}
+})
+.catch(()=>{
+alert("Không thể kết nối máy chủ!");
+})
+.finally(()=>{
+btn.disabled=false;
+btn.innerText="GỬI YÊU CẦU";
+});
 });
 </script>
 
 </body>
 </html>
-
-
 
 
