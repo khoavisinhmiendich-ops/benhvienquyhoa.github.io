@@ -285,49 +285,51 @@ card.classList.add('show');
 });
 
 /* FORM SUBMIT PROFESSIONAL */
+<script>
 document.getElementById("formXN").addEventListener("submit", function(e){
-e.preventDefault();
+    e.preventDefault();
 
-const btn=this.querySelector("button");
-btn.disabled=true;
-btn.innerText="Đang gửi...";
+    const btn=this.querySelector("button");
+    btn.disabled=true;
+    btn.innerText="Đang gửi...";
 
-const data={
-hoten:this.hoten.value,
-email:this.email.value,
-sdt:this.sdt.value,
-noidung:this.noidung.value,
-thoigian:new Date().toLocaleString("vi-VN")
-};
+    const data={
+        hoten:this.hoten.value,
+        email:this.email.value,
+        sdt:this.sdt.value,
+        noidung:this.noidung.value,
+        thoigian:new Date().toLocaleString("vi-VN")
+    };
 
-fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
-method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify(data)
-})
-.then(res=>{
-if(res.ok){
-document.getElementById("successBox").style.display="block";
-this.reset();
-setTimeout(()=>{
-document.getElementById("successBox").style.display="none";
-},4000);
-}else{
-alert("Có lỗi xảy ra!");
-}
-})
-.catch(()=>{
-alert("Không thể kết nối máy chủ!");
-})
-.finally(()=>{
-btn.disabled=false;
-btn.innerText="GỬI YÊU CẦU";
-});
+    fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(data)
+    })
+    .then(res=>{
+        if(res.ok){
+            document.getElementById("successBox").style.display="block";
+            this.reset();
+            setTimeout(()=>{
+                document.getElementById("successBox").style.display="none";
+            },4000);
+        }else{
+            alert("Có lỗi xảy ra!");
+        }
+    })
+    .catch(()=>{
+        alert("Không thể kết nối máy chủ!");
+    })
+    .finally(()=>{
+        btn.disabled=false;
+        btn.innerText="GỬI YÊU CẦU";
+    });
 });
 </script>
 
 </body>
 </html>
+
 
 
 
