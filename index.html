@@ -3,177 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Khoa Vi Sinh - Miễn Dịch | BV Quy Hòa</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-    font-family:"Times New Roman", Times, serif;
-    background:#f2f6fa;
+font-family:"Times New Roman";
+background:#f2f6fa;
 }
 
 /* TOPBAR */
+
 .topbar{
-    background:#003366;
-    color:white;
-    padding:8px 40px;
-    font-size:14px;
-    display:flex;
-    justify-content:space-between;
+background:#003366;
+color:white;
+padding:8px 40px;
+display:flex;
+justify-content:space-between;
 }
 
 /* HEADER */
+
 .header{
-    background:white;
-    padding:15px 0;
-    text-align:center;
-    border-bottom:3px solid #003366;
+background:white;
+text-align:center;
+padding:15px;
+border-bottom:3px solid #003366;
 }
 
 .header img{width:110px;}
 
 .header h1{
-    font-size:20px;
-    color:#003366;
-    font-weight:bold;
-    margin-top:5px;
+color:#003366;
+font-size:20px;
+margin-top:5px;
 }
 
 /* NAVBAR */
+
 .navbar{
-    background:#00509e;
-    display:flex;
-    justify-content:center;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+background:#00509e;
+display:flex;
+justify-content:center;
+position:sticky;
+top:0;
+z-index:999;
 }
 
 .navbar ul{
-    list-style:none;
-    display:flex;
+display:flex;
+list-style:none;
 }
-
-.navbar li{position:relative;}
 
 .navbar a{
-    display:block;
-    padding:15px 25px;
-    color:white;
-    text-decoration:none;
-    font-size:15px;
-    transition:0.3s;
+color:white;
+text-decoration:none;
+padding:15px 25px;
+display:block;
 }
 
-.navbar a:hover{background:#003366;}
+.navbar a:hover{
+background:#003366;
+}
 
 /* HERO */
+
 .hero{
-    position:relative;
-    height:400px;
-    overflow:hidden;
+position:relative;
+height:400px;
+overflow:hidden;
 }
 
 .slide{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-position:center;
-    opacity:0;
-    transition:opacity 1s ease;
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:1s;
 }
 
-.slide.active{opacity:1;}
+.slide.active{
+opacity:1;
+}
 
 .hero-title{
-    position:absolute;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-    background:rgba(0,51,102,0.6);
-    padding:12px 30px;
-    border-radius:6px;
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+color:white;
+font-size:28px;
+background:rgba(0,51,102,0.6);
+padding:12px 30px;
+border-radius:6px;
 }
 
 /* CONTAINER */
+
 .container{
-    width:1100px;
-    max-width:95%;
-    margin:60px auto;
+width:1100px;
+max-width:95%;
+margin:60px auto;
 }
 
 /* CARD */
+
 .card{
-    background:white;
-    padding:40px;
-    border-radius:10px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    margin-bottom:40px;
-    opacity:0;
-    transform:translateY(40px);
-    transition:0.8s;
-}
-
-.card.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.section-title{
-    font-size:20px;
-    font-weight:bold;
-    color:#003366;
-    margin-bottom:15px;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+margin-bottom:40px;
 }
 
 /* FORM */
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border:1px solid #999;
-    border-radius:6px;
-    font-size:15px;
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
 button{
-    width:100%;
-    padding:14px;
-    background:#003366;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
+width:100%;
+padding:14px;
+background:#003366;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-bottom:10px;
 }
 
-button:hover{background:#001f4d;}
+button:hover{
+background:#001f4d;
+}
+
+/* SUCCESS */
 
 #successBox{
-    display:none;
-    background:#d4edda;
-    color:#155724;
-    padding:12px;
-    border-radius:6px;
-    margin-bottom:20px;
-    text-align:center;
-    font-weight:bold;
+display:none;
+background:#d4edda;
+color:#155724;
+padding:12px;
+border-radius:6px;
+margin-bottom:20px;
+text-align:center;
 }
 
+/* FOOTER */
+
 .footer{
-    background:#003366;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:60px;
+background:#003366;
+color:white;
+text-align:center;
+padding:20px;
 }
+
 </style>
 </head>
 
@@ -186,7 +181,7 @@ button:hover{background:#001f4d;}
 
 <div class="header">
 <img src="logo.png">
-<h1>BỆNH VIỆN PHONG - DA LIỄU TRUNG ƯƠNG QUY HÒA</h1>
+<h1>BỆNH VIỆN PHONG - DA LIỄU TW QUY HÒA</h1>
 </div>
 
 <nav class="navbar">
@@ -199,104 +194,145 @@ button:hover{background:#001f4d;}
 </nav>
 
 <div class="hero">
-<div class="slide active" style="background-image:url('benhvien.jpg');"></div>
-<div class="slide" style="background-image:url('benhvien2.jpg');"></div>
-<div class="slide" style="background-image:url('benhvien3.jpg');"></div>
+
+<div class="slide active" style="background-image:url('benhvien.jpg')"></div>
+<div class="slide" style="background-image:url('benhvien2.jpg')"></div>
+<div class="slide" style="background-image:url('benhvien3.jpg')"></div>
+
 <div class="hero-title">
 PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
 </div>
+
 </div>
 
 <div class="container">
 
 <div class="card">
-<div class="section-title">Bệnh viện TW Quy Hòa</div>
-<p>Khoa Vi Sinh - Miễn Dịch thực hiện các xét nghiệm dị nguyên, bệnh lý dị ứng.</p>
-<p>Hệ thống xét nghiệm hiện đại, đảm bảo độ chính xác và an toàn.</p>
+
+<h2>Bệnh viện TW Quy Hòa</h2>
+
+<p>Khoa Vi Sinh - Miễn Dịch thực hiện các xét nghiệm dị nguyên.</p>
+
+<p>Hệ thống xét nghiệm hiện đại đảm bảo độ chính xác.</p>
+
 </div>
 
 <div class="card">
-<div class="section-title">Gửi yêu cầu nhận kết quả</div>
 
-<div id="successBox">✔ Yêu cầu đã gửi thành công!</div>
+<h2>Gửi yêu cầu nhận kết quả</h2>
+
+<div id="successBox">✔ Đã gửi thông tin thành công</div>
 
 <form id="formXN">
+
 <input type="text" name="hoten" placeholder="Họ và tên" required>
+
 <input type="email" name="email" placeholder="Email" required>
+
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
-<input type="text" name="thoigian" placeholder="Thời gian" required>
-<textarea name="noidung" rows="4" placeholder="Nội dung cần hỗ trợ"></textarea>
-<button type="submit">GỬI YÊU CẦU</button>
+
+<textarea name="noidung" placeholder="Nội dung cần hỗ trợ"></textarea>
+
+<button type="submit">📧 Gửi yêu cầu</button>
+
+<button type="button" onclick="sendMessenger()">💬 Gửi Messenger</button>
+
 </form>
 
 </div>
+
 </div>
 
 <div class="footer">
-© 2026 Bệnh viện Phong - Da Liễu TW Quy Hòa
+© 2026 BV Phong - Da Liễu TW Quy Hòa
 </div>
 
 <script>
-/* SLIDESHOW */
-let slides=document.querySelectorAll('.slide');
-let index=0;
-setInterval(()=>{
-slides[index].classList.remove('active');
-index=(index+1)%slides.length;
-slides[index].classList.add('active');
-},4000);
 
-/* SCROLL ANIMATION */
-let cards=document.querySelectorAll('.card');
-window.addEventListener('scroll',()=>{
-cards.forEach(card=>{
-let pos=card.getBoundingClientRect().top;
-if(pos<window.innerHeight-100){
-card.classList.add('show');
-}
-});
-});
+/* SLIDE */
+
+let slides=document.querySelectorAll(".slide")
+
+let i=0
+
+setInterval(()=>{
+
+slides[i].classList.remove("active")
+
+i=(i+1)%slides.length
+
+slides[i].classList.add("active")
+
+},4000)
+
+
 
 /* FORM SUBMIT */
-document.getElementById("formXN").addEventListener("submit", function(e){
-e.preventDefault();
 
-const btn=this.querySelector("button");
-btn.disabled=true;
-btn.innerText="Đang gửi...";
+document.getElementById("formXN").addEventListener("submit",function(e){
 
-const data={
-hoten:this.hoten.value,
-email:this.email.value,
-sdt:this.sdt.value,
-noidung:this.noidung.value,
-thoigian:new Date().toLocaleString("vi-VN")
-};
+e.preventDefault()
+
+let form=new FormData(this)
 
 fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
+
 method:"POST",
-headers:{"Content-Type":"application/json"},
-body:JSON.stringify(data)
+
+body:form
+
 })
-.then(res=>{
-if(res.ok){
-document.getElementById("successBox").style.display="block";
-this.reset();
-setTimeout(()=>{
-document.getElementById("successBox").style.display="none";
-},4000);
-}else{
-alert("Có lỗi xảy ra!");
-}
+
+.then(()=>{
+
+document.getElementById("successBox").style.display="block"
+
+this.reset()
+
 })
+
 .catch(()=>{
-alert("Không thể kết nối máy chủ!");
+
+alert("Lỗi gửi dữ liệu")
+
 })
-.finally(()=>{
-btn.disabled=false;
-btn.innerText="GỬI YÊU CẦU";
-});
-});
+
+})
+
+
+
+/* SEND MESSENGER */
+
+function sendMessenger(){
+
+let name=document.querySelector("[name=hoten]").value
+
+let phone=document.querySelector("[name=sdt]").value
+
+let email=document.querySelector("[name=email]").value
+
+let note=document.querySelector("[name=noidung]").value
+
+let msg="Yêu cầu xét nghiệm:%0A"
+
++"Họ tên: "+name+"%0A"
+
++"SĐT: "+phone+"%0A"
+
++"Email: "+email+"%0A"
+
++"Nội dung: "+note
+
+window.open(
+
+"https://m.me/benhvientwquyhoa?text="+msg,
+
+"_blank"
+
+)
+
+}
+
 </script>
 
 </body>
