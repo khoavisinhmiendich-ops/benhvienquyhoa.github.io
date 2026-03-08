@@ -231,6 +231,8 @@ PHIẾU TRẢ KẾT QUẢ XÉT NGHIỆM DỊ NGUYÊN
 
 <input type="text" name="sdt" placeholder="Số điện thoại" required>
 
+<input type="text" name="thoigian" placeholder="Thời gian" required>
+
 <textarea name="noidung" placeholder="Nội dung cần hỗ trợ"></textarea>
 
 <button type="submit">📧 Gửi yêu cầu</button>
@@ -275,7 +277,7 @@ e.preventDefault()
 
 let form=new FormData(this)
 
-fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di",{
+fetch("https://hook.eu1.make.com/8vbqyl8s9g6pwqid389nwf35xychx8di
 
 method:"POST",
 
@@ -309,6 +311,8 @@ let name=document.querySelector("[name=hoten]").value
 
 let phone=document.querySelector("[name=sdt]").value
 
+let phone=document.querySelector("[name=thoigian]").value
+  
 let email=document.querySelector("[name=email]").value
 
 let note=document.querySelector("[name=noidung]").value
@@ -337,6 +341,7 @@ window.open(
 
 </body>
 </html>
+
 
 
 
